@@ -1,0 +1,121 @@
+// SASS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home
+//   width: $icon-home-width
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites
+$blog-name: 'blog'
+$blog-x: 60px
+$blog-y: 0px
+$blog-offset-x: -60px
+$blog-offset-y: 0px
+$blog-width: 60px
+$blog-height: 62px
+$blog-total-width: 180px
+$blog-total-height: 128px
+$blog-image: '../img/sprite.png'
+$blog: (60px, 0px, -60px, 0px, 60px, 62px, 180px, 128px, '../img/sprite.png', 'blog', )
+$cloud-name: 'cloud'
+$cloud-x: 120px
+$cloud-y: 0px
+$cloud-offset-x: -120px
+$cloud-offset-y: 0px
+$cloud-width: 60px
+$cloud-height: 62px
+$cloud-total-width: 180px
+$cloud-total-height: 128px
+$cloud-image: '../img/sprite.png'
+$cloud: (120px, 0px, -120px, 0px, 60px, 62px, 180px, 128px, '../img/sprite.png', 'cloud', )
+$star-small-name: 'star-small'
+$star-small-x: 60px
+$star-small-y: 66px
+$star-small-offset-x: -60px
+$star-small-offset-y: -66px
+$star-small-width: 8px
+$star-small-height: 8px
+$star-small-total-width: 180px
+$star-small-total-height: 128px
+$star-small-image: '../img/sprite.png'
+$star-small: (60px, 66px, -60px, -66px, 8px, 8px, 180px, 128px, '../img/sprite.png', 'star-small', )
+$star-name: 'star'
+$star-x: 0px
+$star-y: 66px
+$star-offset-x: 0px
+$star-offset-y: -66px
+$star-width: 60px
+$star-height: 62px
+$star-total-width: 180px
+$star-total-height: 128px
+$star-image: '../img/sprite.png'
+$star: (0px, 66px, 0px, -66px, 60px, 62px, 180px, 128px, '../img/sprite.png', 'star', )
+$supp-name: 'supp'
+$supp-x: 0px
+$supp-y: 0px
+$supp-offset-x: 0px
+$supp-offset-y: 0px
+$supp-width: 60px
+$supp-height: 66px
+$supp-total-width: 180px
+$supp-total-height: 128px
+$supp-image: '../img/sprite.png'
+$supp: (0px, 0px, 0px, 0px, 60px, 66px, 180px, 128px, '../img/sprite.png', 'supp', )
+$spritesheet-width: 180px
+$spritesheet-height: 128px
+$spritesheet-image: '../img/sprite.png'
+$spritesheet-sprites: ($blog, $cloud, $star-small, $star, $supp, )
+$spritesheet: (180px, 128px, '../img/sprite.png', $spritesheet-sprites, )
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home
+//   @include sprite-width($icon-home)
+//
+// .icon-email
+//   @include sprite($icon-email)
+//
+// Example usage in HTML:
+//   `display: block` sprite:
+//   <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//   // CSS
+//   .icon {
+//     display: inline-block;
+//   }
+//
+//   // HTML
+//   <i class="icon icon-home"></i>
+@mixin sprite-width($sprite)
+  width: nth($sprite, 5)
+
+@mixin sprite-height($sprite)
+  height: nth($sprite, 6)
+
+@mixin sprite-position($sprite)
+  $sprite-offset-x: nth($sprite, 3)
+  $sprite-offset-y: nth($sprite, 4)
+  background-position: $sprite-offset-x  $sprite-offset-y
+
+@mixin sprite-image($sprite)
+  $sprite-image: nth($sprite, 9)
+  background-image: url(#{$sprite-image})
+
+@mixin sprite($sprite)
+  @include sprite-image($sprite)
+  @include sprite-position($sprite)
+  @include sprite-width($sprite)
+  @include sprite-height($sprite)
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SASS
+//
+// @include sprites($spritesheet-sprites)
+@mixin sprites($sprites)
+  @each $sprite in $sprites
+    $sprite-name: nth($sprite, 10)
+    .#{$sprite-name}
+      @include sprite($sprite)

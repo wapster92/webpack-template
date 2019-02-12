@@ -1,0 +1,34 @@
+@import './utils/sprite'
+
+=media($width)
+    @media (max-width: $width)
+            @content
+    
+
+
+h1
+    font-size: 45px
+    background: #000
+    margin: 0
+    position: relative
+    &:before
+        content: ''
+        position: absolute
+        top: 0
+        right: 0
+        +sprite($blog)
+.like
+    &__fdf
+        height: 20px
+        background: #000
+        transition: all 3s
+        +media(1200px)
+            background: yellow
+        &:hover
+            background: #fff
+            +media(1200px)
+                background-color: red
+    &_
+.icon--home
+    height: 512px
+    width: 512px
