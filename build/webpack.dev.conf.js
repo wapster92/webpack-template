@@ -23,6 +23,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new CopyWebpackPlugin([
       { from: `${baseWebpackConfig.externals.paths.src.assets}/img`, to: `${baseWebpackConfig.externals.paths.assets}img` },
       { from: `${baseWebpackConfig.externals.paths.src.source}/static`, to: '' },
+      { from: `${baseWebpackConfig.externals.paths.src.assets}/fonts`, to: `${baseWebpackConfig.externals.paths.assets}fonts` }
     ])
   ]
 })

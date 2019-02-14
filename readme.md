@@ -4,7 +4,7 @@
 **Должны быть установлены [node js](https://nodejs.org/en/) и [yarn](https://yarnpkg.com/en/docs/install)**
 
 ```
-git clone git@github.com:wapster92/template.git .
+git clone git@github.com:wapster92/webpack-template.git .
 yarn install
 ```
 
@@ -12,7 +12,7 @@ yarn install
 
 ```
 git init
-git remote add origin git@github.com:wapster92/template.git
+git remote add origin git@github.com:wapster92/webpack-template.git
 git fetch
 git pull origin master
 rm -rf .git
