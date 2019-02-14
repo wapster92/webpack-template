@@ -1,3 +1,4 @@
+
 @function rem($pixels, $context: $mainFontSize) {
   @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
@@ -20,4 +21,10 @@
   :-moz-placeholder           {@content}
   ::-moz-placeholder          {@content}
   :-ms-input-placeholder      {@content}
+}
+
+@mixin max-width($max-width) {
+  @media (max-width: $max-width){
+    @content
+  }
 }

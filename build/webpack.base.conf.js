@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const spriteSmithPlugin = require('webpack-spritesmith')
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin')
+const webpack = require('webpack')
 
 
 const PATHS = {
