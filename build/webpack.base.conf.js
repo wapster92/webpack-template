@@ -4,7 +4,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const spriteSmithPlugin = require('webpack-spritesmith')
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin')
-const webpack = require('webpack')
 
 
 const PATHS = {
@@ -107,7 +106,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       hash: false,
       filename: './index.html',
-      template: `${PATHS.src.source}/index.pug`
+      template: `${PATHS.src.source}/index.pug`,
+      inject: false,
+      minify: false
     }),
     new spriteSmithPlugin({
       src: {
