@@ -1,6 +1,6 @@
 # Сборка Webpack c PUG
 
-##Установка
+## Установка
 **Должны быть установлены [node js](https://nodejs.org/en/) и [yarn](https://yarnpkg.com/en/docs/install)**
 
 ```
