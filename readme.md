@@ -28,7 +28,7 @@ yarn install
 ## Запуск
 
 ```
-yarn run dev			#Для разработки
+yarn run dev	        #Для разработки
 yarn run build		#Для сборки проекта
 ```
 
