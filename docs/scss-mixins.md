@@ -134,4 +134,4 @@ input:-ms-input-placeholder {
   }
 }
 ```
-Модуль [css-mqpacker](https://www.npmjs.com/package/css-mqpacker) все запросы объеденит по брекпоинтам.
+Модуль [css-mqpacker](https://www.npmjs.com/package/css-mqpacker) все запросы объеденит по брекпоинтам

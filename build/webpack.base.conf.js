@@ -21,10 +21,10 @@ module.exports = {
     paths: PATHS
   },
   entry: {
-    index: PATHS.src.source
+    index: `${PATHS.src.source}/index.js`
   },
   output: {
-    filename: `${PATHS.assets}js/[name].js`,
+    filename: `${PATHS.assets}/js/[name].js`,
     path: PATHS.dist,
     publicPath: ''
   },
@@ -58,7 +58,8 @@ module.exports = {
           }
         }
       ]
-    }, {
+    },
+    {
       test: /\.css$/,
       use: [
         'style-loader',
@@ -71,7 +72,8 @@ module.exports = {
           options: { sourceMap: true, config: { path: `${PATHS.src.source}/config/postcss.config.js` } }
         }
       ]
-    },{
+    },
+    {
       test: /\.pug$/,
       include: PATHS.src.source,
       use: [
@@ -84,14 +86,32 @@ module.exports = {
             conservativeCollapse: false
           }
         },
+        // {
+        //   loader: 'pug-html-loader',
+        //   options: {
+        //     pretty: true
+        //   }
+        // },
         {
-          loader: 'pug-html-loader',
+          loader: 'pug-bem-plain-loader',
           options: {
             pretty: true
           }
-        },
+        }
+      ]
+    },
+    {
+      test: /\.html$/,
+      include: PATHS.src.source,
+      use: [
         {
-          loader: 'pug-bem-plain-loader'
+          loader: 'html-loader',
+          options: {
+            minimize: false,
+            attrs: false,
+            collapseWhitespace: false,
+            conservativeCollapse: false
+          }
         }
       ]
     }]
@@ -107,7 +127,16 @@ module.exports = {
       hash: false,
       filename: './index.html',
       template: `${PATHS.src.source}/index.pug`,
-      inject: false,
+      inject: true,
+      chunks: ['index'],
+      minify: false
+    }),
+    new HtmlWebpackPlugin({
+      hash: false,
+      filename: './index2.html',
+      template: `${PATHS.src.source}/index2.html`,
+      inject: true,
+      chunks: ['index'],
       minify: false
     }),
     new spriteSmithPlugin({
