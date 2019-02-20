@@ -24,7 +24,7 @@ module.exports = {
     index: `${PATHS.src.source}/index.js`
   },
   output: {
-    filename: `${PATHS.assets}/js/[name].js`,
+    filename: `${PATHS.assets}js/[name].js`,
     path: PATHS.dist,
     publicPath: ''
   },
