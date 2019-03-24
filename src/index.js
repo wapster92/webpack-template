@@ -4,7 +4,7 @@ import './assets/scss/index.scss';
 import './assets/js/common';
 
 import Vue from 'vue/dist/vue.esm';
-import $ from 'jquery'
+
 
 new Vue({
   el: '#app',
@@ -13,11 +13,6 @@ new Vue({
   }
 });
 
-$('h1').on('click', function () {
-  $(this).css({
-    color: 'red'
-  })
-});
 
 
 

@@ -2,6 +2,7 @@ const webpack =  require('webpack')
 const merge = require('webpack-merge')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const baseWebpackConfig = require('./webpack.base.conf')
+const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   // DEV config
@@ -24,7 +25,18 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       { from: `${baseWebpackConfig.externals.paths.src.assets}/img`, to: `${baseWebpackConfig.externals.paths.assets}img` },
       { from: `${baseWebpackConfig.externals.paths.src.source}/static`, to: '' },
       { from: `${baseWebpackConfig.externals.paths.src.assets}/fonts`, to: `${baseWebpackConfig.externals.paths.assets}fonts` }
-    ])
+    ]),
+    new ImageminWebpWebpackPlugin({
+      config: [{
+        test: /\.(jpe?g|png)/,
+        options: {
+          quality: 90
+        }
+      }],
+      overrideExtension: false,
+      detailedLogs: false,
+      strict: true
+    })
   ]
 })
 
