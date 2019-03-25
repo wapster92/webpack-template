@@ -3,7 +3,9 @@
 module.exports = {
   plugins: [
     require('autoprefixer'),
-    require('css-mqpacker'),
+    require('css-mqpacker')({
+      sort: require('sort-css-media-queries')
+    }),
     require('cssnano')({
       preset: [
         'default', {
