@@ -151,7 +151,7 @@ module.exports = {
       apiOptions: {
           cssImageRef: `../img/sprite.png`
       },
-      retina: '@2x'
+      //retina: '@2x'
     }),
     new SVGSpritemapPlugin(`${PATHS.src.assets}/sprite/**/*.svg`, {
       output: {filename: '/assets/img/sprite.svg'},
