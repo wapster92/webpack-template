@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const spriteSmithPlugin = require('webpack-spritesmith')
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin')
+const {VueLoaderPlugin} = require('vue-loader')
 
 
 const PATHS = {
@@ -33,7 +34,17 @@ module.exports = {
       test: /\.js$/,
       loader: 'babel-loader',
       exclude: /node_modules/
-    }, /* {
+    },
+    {
+      test: /\.vue$/,
+      loader: 'vue-loader',
+      options: {
+        loader:{
+          scss: 'vue-style-loader!css-loader!sass-loader'
+        }
+      }
+    },
+    /* {
       test: /\.(png|jpg|jpeg|gif|svg)$/,
       loader: 'file-loader',
       options: {
@@ -120,6 +131,7 @@ module.exports = {
     modules: ["node_modules", "spritesmith-generated"]
   },
   plugins: [
+    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].css`,
     }),
