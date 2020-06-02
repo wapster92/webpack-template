@@ -1,10 +1,10 @@
-const path = require('path')
+const path = require('path');
 //const glob = require('glob')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const spriteSmithPlugin = require('webpack-spritesmith')
-const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin')
-const {VueLoaderPlugin} = require('vue-loader')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const spriteSmithPlugin = require('webpack-spritesmith');
+const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const {VueLoaderPlugin} = require('vue-loader');
 
 
 const PATHS = {
@@ -14,7 +14,7 @@ const PATHS = {
   },
   dist: path.join(__dirname, '../dist'),
   assets: 'assets/'
-}
+};
 
 module.exports = {
   // BASE config
@@ -33,7 +33,7 @@ module.exports = {
     rules: [{
       test: /\.js$/,
       loader: 'babel-loader',
-      exclude: /node_modules/
+      exclude: '/node_modules/'
     },
     {
       test: /\.vue$/,
@@ -138,22 +138,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       hash: false,
       filename: './index.html',
-      template: `${PATHS.src.source}/index.pug`,
-      inject: true,
-      chunks: ['index'],
-      minify: false
-    }),
-    new HtmlWebpackPlugin({
-      hash: false,
-      filename: './index2.html',
-      template: `${PATHS.src.source}/index2.html`,
+      template: `${PATHS.src.source}/index.html`,
       inject: true,
       chunks: ['index'],
       minify: false
     }),
     new spriteSmithPlugin({
       src: {
-          cwd: `${PATHS.src.assets}/sprite/png`,
+          cwd: `${PATHS.src.assets}/img/sprite/png`,
           glob: '*.png'
       },
       target: {
@@ -165,11 +157,11 @@ module.exports = {
       },
       //retina: '@2x'
     }),
-    new SVGSpritemapPlugin(`${PATHS.src.assets}/sprite/**/*.svg`, {
+    new SVGSpritemapPlugin(`${PATHS.src.assets}/img/sprite/**/*.svg`, {
       output: {filename: '/assets/img/sprite.svg'},
       sprite: {
-        
+
       }
     })
   ]
-}
+};
